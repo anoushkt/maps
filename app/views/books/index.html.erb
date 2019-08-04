@@ -1,0 +1,10 @@
+<h1>Welcome to the amp map simulation</h1>
+
+<ul id="books">
+  <% @books.each do |book| %>
+    <li>
+      <%= book.af %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Create a New book", new_book_path, class: "new_book" %>
