@@ -263,7 +263,7 @@
     <input type="checkbox" class="checkbox" value="Ukraine" checked><label>Ukraine</label>
     <input type="checkbox" class="checkbox" value="United Arab Emirates" checked><label>United Arab Emirates</label>
     <input type="checkbox" class="checkbox" value="unitedKingdom" checked><label>UnitedKingdom</label>
-    <input type="checkbox" class="checkbox" value="unitedStates" checked><label>Niue</label>
+    <input type="checkbox" class="checkbox" value="unitedStates" checked><label>unitedStates</label>
     <input type="checkbox" class="checkbox" value="United States Minor Outlying Islands" checked><label>United States Minor Outlying Islands</label>
     <input type="checkbox" class="checkbox" value="Uruguay" checked><label>Uruguay</label>
     <input type="checkbox" class="checkbox" value="Uzbekistan" checked><label>Uzbekistan</label>
@@ -281,16 +281,28 @@
 
 <div>
     <input type="radio" id="contactChoice1"
-     name="contact" value="apple" checked onclick="update()">
-    <label for="contactChoice1">apple</label>
+     name="contact" value="dns" checked onclick="update()">
+    <label for="contactChoice1">dns</label>
 
     <input type="radio" id="contactChoice2"
-     name="contact" value="phone" onclick="update()">
-    <label for="contactChoice2">Phone</label>
+     name="contact" value="dnsallfilter" onclick="update()">
+    <label for="contactChoice2">dnsallfilter</label>
 
     <input type="radio" id="contactChoice3"
-     name="contact" value="mail" onclick="update()">
-    <label for="contactChoice3">Mail</label>
+     name="contact" value="ntpPrivate" onclick="update()">
+    <label for="contactChoice3">ntpPrivate</label>
+
+
+      <input type="radio" id="contactChoice4"
+       name="contact" value="chargen" onclick="update()">
+      <label for="contactChoice4">chargen</label>
+
+
+      <input type="radio" id="contactChoice5"
+       name="contact" value="ssdp" onclick="update()">
+      <label for="contactChoice5">ssdp</label>
+
+
 </div>
 
 
@@ -323,12 +335,9 @@ var svg = d3.select("svg"),
 var projection = d3.geoNaturalEarth()
     .scale(width / 1.3 / Math.PI)
     .translate([width / 2, height / 2])
-  var markers = [{"name": "59.52.224.9", "ampFactor": 7.9545, "radius": 3.97725, "fillKey": 1, "latitude": 28.1938, "longitude": 115.7836, "city": "Jianguang", "country": "China", "protocol": "apple"}, {"name": "146.88.66.214", "ampFactor": 62.6061, "radius": 31.30305, "fillKey": 1, "latitude": 14.6477, "longitude": 121.0493, "city": "Quezon City", "country": "Philippines", "protocol": "dns"}, {"name": "220.247.172.229", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": -6.1741, "longitude": 106.8296, "city": "Jakarta", "country": "Indonesia", "protocol": "apple"}];
+  var markers = [{"name": "59.52.224.9", "ampFactor": 7.9545, "radius": 3.97725, "fillKey": 1, "latitude": 28.1938, "longitude": 115.7836, "city": "Jianguang", "country": "China", "protocol": "dns"}, {"name": "146.88.66.214", "ampFactor": 62.6061, "radius": 31.30305, "fillKey": 1, "latitude": 14.6477, "longitude": 121.0493, "city": "Quezon City", "country": "Philippines", "protocol": "dns"}, {"name": "220.247.172.229", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": -6.1741, "longitude": 106.8296, "city": "Jakarta", "country": "Indonesia", "protocol": "dns"}, {"name": "107.154.51.107", "ampFactor": 4.197, "radius": 2.0985, "fillKey": 1, "latitude": 37.751, "longitude": -97.822, "city": null, "country": "unitedStates", "protocol": "dns"}, {"name": "166.62.58.44", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": 33.6013, "longitude": -111.8867, "city": "Scottsdale", "country": "unitedStates", "protocol": "dns"}, {"name": "39.129.208.114", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 25.0389, "longitude": 102.7183, "city": "Kunming", "country": "China", "protocol": "dns"}, {"name": "221.7.103.25", "ampFactor": 8.1212, "radius": 4.0606, "fillKey": 1, "latitude": 29.5569, "longitude": 106.5531, "city": null, "country": "China", "protocol": "dns"}, {"name": "96.72.225.114", "ampFactor": 23.4545, "radius": 11.72725, "fillKey": 1, "latitude": 39.6192, "longitude": -85.4321, "city": "Rushville", "country": "unitedStates", "protocol": "dns"}, {"name": "213.145.139.30", "ampFactor": 18.1364, "radius": 9.0682, "fillKey": 1, "latitude": 41.0, "longitude": 75.0, "city": null, "country": "Kyrgyzstan", "protocol": "dns"}, {"name": "67.231.250.14", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": 42.747, "longitude": -73.7527, "city": "Latham", "country": "unitedStates", "protocol": "dns"}, {"name": "89.238.165.20", "ampFactor": 20.5942, "radius": 10.2971, "fillKey": 1, "latitude": 51.4973, "longitude": -0.1553, "city": "London", "country": "unitedKingdom", "protocol": "dns"}, {"name": "217.10.200.62", "ampFactor": 18.1818, "radius": 9.0909, "fillKey": 1, "latitude": 44.4354, "longitude": 26.1033, "city": "Bucharest", "country": "Romania", "protocol": "dns"}, {"name": "8.46.206.164", "ampFactor": 23.4545, "radius": 11.72725, "fillKey": 1, "latitude": 40.2874, "longitude": -84.1622, "city": "Sidney", "country": "unitedStates", "protocol": "dns"}, {"name": "118.218.81.122", "ampFactor": 8.1818, "radius": 4.0909, "fillKey": 1, "latitude": 37.5112, "longitude": 126.97409999999999, "city": null, "country": "South Korea", "protocol": "dns"}, {"name": "64.2.160.190", "ampFactor": 23.4545, "radius": 11.72725, "fillKey": 1, "latitude": 37.751, "longitude": -97.822, "city": null, "country": "unitedStates", "protocol": "dns"}, {"name": "59.60.23.108", "ampFactor": 8.1818, "radius": 4.0909, "fillKey": 1, "latitude": 24.4798, "longitude": 118.0819, "city": null, "country": "China", "protocol": "dns"}, {"name": "201.184.40.48", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 3.4384, "longitude": -76.5232, "city": "Santiago de Cali", "country": "Colombia", "protocol": "dns"}, {"name": "45.56.85.215", "ampFactor": 1.4242, "radius": 0.7121, "fillKey": 1, "latitude": 37.5625, "longitude": -122.0004, "city": "Fremont", "country": "unitedStates", "protocol": "dns"}, {"name": "146.83.132.8", "ampFactor": 1.0, "radius": 0.5, "fillKey": 1, "latitude": -29.9533, "longitude": -71.3436, "city": "Coquimbo", "country": "Chile", "protocol": "dns"}, {"name": "220.248.87.98", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 31.0449, "longitude": 121.4012, "city": null, "country": "China", "protocol": "dns"}, {"name": "67.231.250.28", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": 42.747, "longitude": -73.7527, "city": "Latham", "country": "unitedStates", "protocol": "dns"}, {"name": "96.71.229.141", "ampFactor": 1.4242, "radius": 0.7121, "fillKey": 1, "latitude": 36.317, "longitude": -119.3087, "city": "Visalia", "country": "unitedStates", "protocol": "dns"}, {"name": "217.12.123.98", "ampFactor": 50.2727, "radius": 25.13635, "fillKey": 1, "latitude": 47.0052, "longitude": 28.8573, "city": "Chisinau", "country": "Republic of Moldova", "protocol": "dns"}, {"name": "201.187.102.185", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": -33.4378, "longitude": -70.6503, "city": null, "country": "Chile", "protocol": "dns"}, {"name": "153.99.125.167", "ampFactor": 19.4848, "radius": 9.7424, "fillKey": 1, "latitude": 32.0617, "longitude": 118.7778, "city": null, "country": "China", "protocol": "dns"}, {"name": "61.240.23.66", "ampFactor": 8.0303, "radius": 4.01515, "fillKey": 1, "latitude": 34.7725, "longitude": 113.7266, "city": null, "country": "China", "protocol": "dns"}, {"name": "217.13.222.24", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 44.0486, "longitude": 43.0594, "city": "Pyatigorsk", "country": "Russia", "protocol": "dns"},{"name": "112.91.152.161", "ampFactor": 22.085714285714282, "radius": 11.042857142857141, "fillKey": "defaultBubble", "latitude": 23.1167, "longitude": 113.25, "city": null, "country": "China", "protocol": "dnsallfilter"}];
 // Load external data and boot
 d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
-var color = d3.scaleOrdinal()
-    .domain(["China", "Indonesia", "Philippines", "United"])
-    .range([ "#402D54", "#D18975", "#8FD175","#ff3300"])
     // Draw the map
     svg.append("g")
         .selectAll("path")
