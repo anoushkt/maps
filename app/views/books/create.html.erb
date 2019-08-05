@@ -2,7 +2,23 @@
 <h1>Choose your options</h1>
 
 
-
+<script>     function update(){
+     // For each check box:
+     d3.selectAll(".checkbox").each(function(d){
+       cb = d3.select(this);
+       grp = cb.property("value")
+       // If the box is check, I show the group
+       if(cb.property("checked")){
+         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol==document.querySelector('input[name="contact"]:checked').value)
+         {return d.ampFactor ;}
+         else {return 0;} } )
+       // Otherwise I hide it
+       }else{
+         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 0).attr("r", 0)
+       }
+     })
+   }
+</script>
 <meta charset="utf-8">
 <style>
 .dropdown {
@@ -34,11 +50,19 @@
   </div>
 </div>
 
-<select id="ddlViewBy">
-  <option value="a">test1</option>
-  <option value="2" selected="selected">test2</option>
-  <option value="3">test3</option>
-</select>
+<div>
+    <input type="radio" id="contactChoice1"
+     name="contact" value="apple" checked onclick="update()">
+    <label for="contactChoice1">apple</label>
+
+    <input type="radio" id="contactChoice2"
+     name="contact" value="phone" onclick="update()">
+    <label for="contactChoice2">Phone</label>
+
+    <input type="radio" id="contactChoice3"
+     name="contact" value="mail" onclick="update()">
+    <label for="contactChoice3">Mail</label>
+</div>
 
 
 <form>
@@ -49,8 +73,7 @@
 <button id="myBtn">Try it</button>
 
 <script>
-function myFunction() {
-  var x = document.getElementById("myNumber").value;
+function myFunction() {update();
 }
 </script>
 <!-- Load d3.js -->
@@ -64,8 +87,6 @@ function myFunction() {
 <svg id="my_dataviz" width="1000" height="1000"></svg>
 <script>
 // The svg
-var e = document.getElementById("ddlViewBy");
-var strUser = e.options[e.selectedIndex].value;
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -104,6 +125,9 @@ var color = d3.scaleOrdinal()
                     .attr("stroke-width", 3)
                     .attr("fill-opacity", .4)
 
+
+
+
                     function update(){
                      // For each check box:
                      d3.selectAll(".checkbox").each(function(d){
@@ -111,7 +135,7 @@ var color = d3.scaleOrdinal()
                        grp = cb.property("value")
                        // If the box is check, I show the group
                        if(cb.property("checked")){
-                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol=="apple")
+                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol==document.querySelector('input[name="contact"]:checked').value)
                          {return d.ampFactor ;}
                          else {return 0;} } )
                        // Otherwise I hide it
@@ -123,6 +147,8 @@ var color = d3.scaleOrdinal()
 
                    // When a button change, I run the update function
                    d3.selectAll(".checkbox").on("change",update);
+                   d3.selectAll(".radio").on("change",update);
+
                    // And I initialize it at the beginning
                    update()
 })
