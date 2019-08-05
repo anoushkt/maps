@@ -1,26 +1,378 @@
-<h1>Enter your choices</h1>
-<%= form_for(@book) do |f| %>
-  <ul>
-  <% @book.errors.full_messages.each do |book| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-  <p>
-    <%= f.label :af %><br />
-    <%= f.text_field :af %>
-  </p>
-  <p>
-    <%= f.label :protocol %><br />
-    <%= f.text_area :protocol %>
-  </p>
-
-  <p>
-    <%= f.label :country %><br />
-    <%= f.text_area :country%>
-  </p>
+<!DOCTYPE html>
+<h1>Choose your options</h1>
 
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<script>     function update(){
+     // For each check box:
+     d3.selectAll(".checkbox").each(function(d){
+       cb = d3.select(this);
+       grp = cb.property("value")
+       // If the box is check, I show the group
+       if(cb.property("checked")){
+         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol==document.querySelector('input[name="contact"]:checked').value)
+         {return d.ampFactor ;}
+         else {return 0;} } )
+       // Otherwise I hide it
+       }else{
+         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 0).attr("r", 0)
+       }
+     })
+   }
+</script>
+<meta charset="utf-8">
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+  background-color: #eb9834
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+
+<div class="dropdown">
+  <span>Countries</span>
+  <div class="dropdown-content">
+    <input type="checkbox" class="checkbox" value="Afghanistan" checked> <label> Afghanistan</label>
+    <input type="checkbox" class="checkbox" value="Åland Islands" checked><label>Åland Islands</label>
+    <input type="checkbox" class="checkbox" value="Albania" checked><label>Albania</label>
+    <input type="checkbox" class="checkbox" value="Algeria" checked><label>Algeria</label>
+    <input type="checkbox" class="checkbox" value="American Samoa" checked><label>American Samoa</label>
+    <input type="checkbox" class="checkbox" value="Andorra" checked><label>Andorra</label>
+    <input type="checkbox" class="checkbox" value="Angola" checked><label>Angola</label>
+    <input type="checkbox" class="checkbox" value="Anguilla" checked><label>Anguilla</label>
+    <input type="checkbox" class="checkbox" value="Antarctica" checked><label>Antarctica</label>
+    <input type="checkbox" class="checkbox" value="Antigua and Barbuda" checked><label>Antigua and Barbuda</label>
+    <input type="checkbox" class="checkbox" value="Argentina" checked><label>Argentina</label>
+    <input type="checkbox" class="checkbox" value="Armenia" checked><label>Armenia</label>
+    <input type="checkbox" class="checkbox" value="Aruba" checked><label>Aruba</label>
+    <input type="checkbox" class="checkbox" value="Australia" checked><label>Australia</label>
+    <input type="checkbox" class="checkbox" value="Austria" checked><label>Austria</label>
+    <input type="checkbox" class="checkbox" value="Azerbaijan" checked><label>Azerbaijan</label>
+    <input type="checkbox" class="checkbox" value="Bahamas" checked><label>Bahamas</label>
+    <input type="checkbox" class="checkbox" value="Bahrain" checked><label>Bahrain</label>
+    <input type="checkbox" class="checkbox" value="Bangladesh" checked><label>Bangladesh</label>
+    <input type="checkbox" class="checkbox" value="Barbados" checked><label>Barbados</label>
+    <input type="checkbox" class="checkbox" value="Belarus" checked><label>Belarus</label>
+    <input type="checkbox" class="checkbox" value="Belgium" checked><label>Belgium</label>
+    <input type="checkbox" class="checkbox" value="Belize" checked><label>Belize</label>
+    <input type="checkbox" class="checkbox" value="Benin" checked><label>Benin</label>
+    <input type="checkbox" class="checkbox" value="Bermuda" checked><label>Bermuda</label>
+    <input type="checkbox" class="checkbox" value="Bhutan" checked><label>Bhutan</label>
+    <input type="checkbox" class="checkbox" value="Bolivia" checked><label>Bolivia</label>
+    <input type="checkbox" class="checkbox" value="Bosnia and Herzegovina" checked><label>Bosnia and Herzegovina</label>
+    <input type="checkbox" class="checkbox" value="Botswana" checked><label>Botswana</label>
+    <input type="checkbox" class="checkbox" value="Bouvet Island" checked><label>Bouvet Island</label>
+    <input type="checkbox" class="checkbox" value="Brazil" checked><label>Brazil</label>
+    <input type="checkbox" class="checkbox" value="British Indian Ocean Territory" checked><label>British Indian Ocean Territory</label>
+    <input type="checkbox" class="checkbox" value="Brunei Darussalam" checked><label>Brunei Darussalam</label>
+    <input type="checkbox" class="checkbox" value="Bulgaria" checked><label>Bulgaria</label>
+    <input type="checkbox" class="checkbox" value="Burkina Faso" checked><label>Burkina Faso</label>
+    <input type="checkbox" class="checkbox" value="Burundi" checked><label>Burundi</label>
+    <input type="checkbox" class="checkbox" value="Cambodia" checked><label>Cambodia</label>
+    <input type="checkbox" class="checkbox" value="Cameroon" checked><label>Cameroon</label>
+    <input type="checkbox" class="checkbox" value="Canada" checked><label>Canada</label>
+    <input type="checkbox" class="checkbox" value="Cape Verde" checked><label>Cape Verde</label>
+    <input type="checkbox" class="checkbox" value="Cayman Islands" checked><label>Cayman Islands</label>
+    <input type="checkbox" class="checkbox" value="Central African Republic" checked><label>Central African Republic</label>
+    <input type="checkbox" class="checkbox" value="Chad" checked><label>Chad</label>
+    <input type="checkbox" class="checkbox" value="Chile" checked><label>Chile</label>
+    <input type="checkbox" class="checkbox" value="China" checked><label>China</label>
+    <input type="checkbox" class="checkbox" value="Christmas Island" checked><label>Christmas Island</label>
+    <input type="checkbox" class="checkbox" value="Colombia" checked><label>Colombia</label>
+    <input type="checkbox" class="checkbox" value="Comoros" checked><label>Comoros</label>
+    <input type="checkbox" class="checkbox" value="Congo" checked><label>Congo</label>
+    <input type="checkbox" class="checkbox" value="Congo, The Democratic Republic of The" checked><label>Congo, The Democratic Republic of The</label>
+    <input type="checkbox" class="checkbox" value="Cook Islands" checked><label>Cook Islands</label>
+    <input type="checkbox" class="checkbox" value="Costa Rica" checked><label>Costa Rica</label>
+    <input type="checkbox" class="checkbox" value="Croatia" checked><label>Croatia</label>
+    <input type="checkbox" class="checkbox" value="Cuba" checked><label>Cuba</label>
+    <input type="checkbox" class="checkbox" value="Cyprus" checked><label>Cyprus</label>
+    <input type="checkbox" class="checkbox" value="Czech Republic" checked><label>Czech Republic</label>
+    <input type="checkbox" class="checkbox" value="Denmark" checked><label>Denmark</label>
+    <input type="checkbox" class="checkbox" value="Djibouti" checked><label>Djibouti</label>
+    <input type="checkbox" class="checkbox" value="Dominica" checked><label>Dominica</label>
+    <input type="checkbox" class="checkbox" value="Dominican Republic" checked><label>Dominican Republic</label>
+    <input type="checkbox" class="checkbox" value="Ecuador" checked><label>Ecuador</label>
+    <input type="checkbox" class="checkbox" value="El Salvador" checked><label>El Salvador</label>
+    <input type="checkbox" class="checkbox" value="Equatorial Guinea" checked><label>Equatorial Guinea</label>
+    <input type="checkbox" class="checkbox" value="Eritrea" checked><label>Eritrea</label>
+    <input type="checkbox" class="checkbox" value="Estonia" checked><label>Estonia</label>
+    <input type="checkbox" class="checkbox" value="Ethiopia" checked><label>Ethiopia</label>
+    <input type="checkbox" class="checkbox" value="Faroe Islands" checked><label>Faroe Islands</label>
+    <input type="checkbox" class="checkbox" value="Fiji" checked><label>Fiji</label>
+    <input type="checkbox" class="checkbox" value="Finland" checked><label>Finland</label>
+    <input type="checkbox" class="checkbox" value="France" checked><label>France</label>
+    <input type="checkbox" class="checkbox" value="French Guiana" checked><label>French Guiana</label>
+    <input type="checkbox" class="checkbox" value="French Polynesia" checked><label>French Polynesia</label>
+    <input type="checkbox" class="checkbox" value="French Southern Territories" checked><label>French Southern Territories</label>
+    <input type="checkbox" class="checkbox" value="Gabon" checked><label>Gabon</label>
+    <input type="checkbox" class="checkbox" value="Gambia" checked><label>Gambia</label>
+    <input type="checkbox" class="checkbox" value="Georgia" checked><label>Georgia</label>
+    <input type="checkbox" class="checkbox" value="Germany" checked><label>Germany</label>
+    <input type="checkbox" class="checkbox" value="Ghana" checked><label>Ghana</label>
+    <input type="checkbox" class="checkbox" value="Gibraltar" checked><label>Gibraltar</label>
+    <input type="checkbox" class="checkbox" value="Greece" checked><label>Greece</label>
+    <input type="checkbox" class="checkbox" value="Greenland" checked><label>Greenland</label>
+    <input type="checkbox" class="checkbox" value="Grenada" checked><label>Grenada</label>
+    <input type="checkbox" class="checkbox" value="Guadeloupe" checked><label>Guadeloupe</label>
+    <input type="checkbox" class="checkbox" value="Guam" checked><label>Guam</label>
+    <input type="checkbox" class="checkbox" value="Guatemala" checked><label>Guatemala</label>
+    <input type="checkbox" class="checkbox" value="Guernsey" checked><label>Guernsey</label>
+    <input type="checkbox" class="checkbox" value="Guinea" checked><label>Guinea</label>
+    <input type="checkbox" class="checkbox" value="Guyana" checked><label>Guyana</label>
+    <input type="checkbox" class="checkbox" value="Haiti" checked><label>Haiti</label>
+    <input type="checkbox" class="checkbox" value="Heard Island and Mcdonald Islands" checked><label>Heard Island and Mcdonald Islands</label>
+    <input type="checkbox" class="checkbox" value="Honduras" checked><label>Honduras</label>
+    <input type="checkbox" class="checkbox" value="Hong Kong" checked><label>Hong Kong</label>
+    <input type="checkbox" class="checkbox" value="Hungary" checked><label>Hungary</label>
+    <input type="checkbox" class="checkbox" value="Iceland" checked><label>Iceland</label>
+    <input type="checkbox" class="checkbox" value="India" checked><label>India</label>
+    <input type="checkbox" class="checkbox" value="Indonesia" checked><label>Indonesia</label>
+    <input type="checkbox" class="checkbox" value="Iran, Islamic Republic of" checked><label>Iran, Islamic Republic of</label>
+    <input type="checkbox" class="checkbox" value="Iraq" checked><label>Iraq</label>
+    <input type="checkbox" class="checkbox" value="Ireland" checked><label>Ireland</label>
+    <input type="checkbox" class="checkbox" value="Isle of Man" checked><label>Isle of Man</label>
+    <input type="checkbox" class="checkbox" value="Israel" checked><label>Israel</label>
+    <input type="checkbox" class="checkbox" value="Italy" checked><label>Italy</label>
+    <input type="checkbox" class="checkbox" value="Jamaica" checked><label>Jamaica</label>
+    <input type="checkbox" class="checkbox" value="Japan" checked><label>Japan</label>
+    <input type="checkbox" class="checkbox" value="Jersey" checked><label>Jersey</label>
+    <input type="checkbox" class="checkbox" value="Jordan" checked><label>Jordan</label>
+    <input type="checkbox" class="checkbox" value="Kazakhstan" checked><label>Kazakhstan</label>
+    <input type="checkbox" class="checkbox" value="Kenya" checked><label>Kenya</label>
+    <input type="checkbox" class="checkbox" value="Kiribati" checked><label>Kiribati</label>
+    <input type="checkbox" class="checkbox" value="Korea" checked><label>Korea</label>
+    <input type="checkbox" class="checkbox" value="Kuwait" checked><label>Kuwait</label>
+    <input type="checkbox" class="checkbox" value="Kyrgyzstan" checked><label>Kyrgyzstan</label>
+    <input type="checkbox" class="checkbox" value="Latvia" checked><label>Latvia</label>
+    <input type="checkbox" class="checkbox" value="Lebanon" checked><label>Lebanon</label>
+    <input type="checkbox" class="checkbox" value="Lesotho" checked><label>Lesotho</label>
+    <input type="checkbox" class="checkbox" value="Liberia" checked><label>Liberia</label>
+    <input type="checkbox" class="checkbox" value="Libyan Arab Jamahiriya" checked><label>Libyan Arab Jamahiriya</label>
+    <input type="checkbox" class="checkbox" value="Liechtenstein" checked><label>Liechtenstein</label>
+    <input type="checkbox" class="checkbox" value="Lithuania" checked><label>Lithuania</label>
+    <input type="checkbox" class="checkbox" value="Luxembourg" checked><label>Luxembourg</label>
+    <input type="checkbox" class="checkbox" value="Macao" checked><label>Macao</label>
+    <input type="checkbox" class="checkbox" value="Macedonia" checked><label>Macedonia</label>
+    <input type="checkbox" class="checkbox" value="Madagascar" checked><label>Madagascar</label>
+    <input type="checkbox" class="checkbox" value="Malawi" checked><label>Malawi</label>
+    <input type="checkbox" class="checkbox" value="Malaysia" checked><label>Malaysia</label>
+    <input type="checkbox" class="checkbox" value="Maldives" checked><label>Maldives</label>
+    <input type="checkbox" class="checkbox" value="Mali" checked><label>Mali</label>
+    <input type="checkbox" class="checkbox" value="Malta" checked><label>Malta</label>
+    <input type="checkbox" class="checkbox" value="Marshall Islands" checked><label>Marshall Islands</label>
+    <input type="checkbox" class="checkbox" value="Martinique" checked><label>Martinique</label>
+    <input type="checkbox" class="checkbox" value="Mauritania" checked><label>Mauritania</label>
+    <input type="checkbox" class="checkbox" value="Mauritius" checked><label>Mauritius</label>
+    <input type="checkbox" class="checkbox" value="Mayotte" checked><label>Mayotte</label>
+    <input type="checkbox" class="checkbox" value="Mexico" checked><label>Mexico</label>
+    <input type="checkbox" class="checkbox" value="Micronesia" checked><label>Micronesia</label>
+    <input type="checkbox" class="checkbox" value="Moldova" checked><label>Moldova</label>
+    <input type="checkbox" class="checkbox" value="Monaco" checked><label>Monaco</label>
+    <input type="checkbox" class="checkbox" value="Mongolia" checked><label>Mongolia</label>
+    <input type="checkbox" class="checkbox" value="Montenegro" checked><label>Montenegro</label>
+    <input type="checkbox" class="checkbox" value="Montserrat" checked><label>Montserrat</label>
+    <input type="checkbox" class="checkbox" value="Morocco" checked><label>Morocco</label>
+    <input type="checkbox" class="checkbox" value="Mozambique" checked><label>Mozambique</label>
+    <input type="checkbox" class="checkbox" value="Myanmar" checked><label>Myanmar</label>
+    <input type="checkbox" class="checkbox" value="Namibia" checked><label>Namibia</label>
+    <input type="checkbox" class="checkbox" value="Nauru" checked><label>Nauru</label>
+    <input type="checkbox" class="checkbox" value="Nepal" checked><label>Nepal</label>
+    <input type="checkbox" class="checkbox" value="Netherlands" checked><label>Netherlands</label>
+    <input type="checkbox" class="checkbox" value="Netherlands Antilles" checked><label>Netherlands Antilles</label>
+    <input type="checkbox" class="checkbox" value="New Caledonia" checked><label>New Caledonia</label>
+    <input type="checkbox" class="checkbox" value="New Zealand" checked><label>New Zealand</label>
+    <input type="checkbox" class="checkbox" value="Nicaragua" checked><label>Nicaragua</label>
+    <input type="checkbox" class="checkbox" value="Niger" checked><label>Niger</label>
+    <input type="checkbox" class="checkbox" value="Nigeria" checked><label>Nigeria</label>
+    <input type="checkbox" class="checkbox" value="Niue" checked><label>Niue</label>
+    <input type="checkbox" class="checkbox" value="Norfolk Island" checked><label>Norfolk Island</label>
+    <input type="checkbox" class="checkbox" value="Northern Mariana Islands" checked><label>Northern Mariana Islands</label>
+    <input type="checkbox" class="checkbox" value="Norway" checked><label>Norway</label>
+    <input type="checkbox" class="checkbox" value="Oman" checked><label>Oman</label>
+    <input type="checkbox" class="checkbox" value="Pakistan" checked><label>Pakistan</label>
+    <input type="checkbox" class="checkbox" value="Palau" checked><label>Palau</label>
+    <input type="checkbox" class="checkbox" value="Palestinian Territory" checked><label>Palestinian Territory</label>
+    <input type="checkbox" class="checkbox" value="Panama" checked><label>Panama</label>
+    <input type="checkbox" class="checkbox" value="Papua New Guinea" checked><label>Papua New Guinea</label>
+    <input type="checkbox" class="checkbox" value="Paraguay" checked><label>Paraguay</label>
+    <input type="checkbox" class="checkbox" value="Peru" checked><label>Peru</label>
+    <input type="checkbox" class="checkbox" value="Philippines" checked><label>Philippines</label>
+    <input type="checkbox" class="checkbox" value="Pitcairn" checked><label>Pitcairn</label>
+    <input type="checkbox" class="checkbox" value="Poland" checked><label>Poland</label>
+    <input type="checkbox" class="checkbox" value="Portugal" checked><label>Portugal</label>
+    <input type="checkbox" class="checkbox" value="Puerto Rico" checked><label>Puerto Rico</label>
+    <input type="checkbox" class="checkbox" value="Qatar" checked><label>Qatar</label>
+    <input type="checkbox" class="checkbox" value="Reunion" checked><label>Reunion</label>
+    <input type="checkbox" class="checkbox" value="Romania" checked><label>Romania</label>
+    <input type="checkbox" class="checkbox" value="Russian Federation" checked><label>Russian Federation</label>
+    <input type="checkbox" class="checkbox" value="Rwanda" checked><label>Rwanda</label>
+    <input type="checkbox" class="checkbox" value="Saint Helena" checked><label>Saint Helena</label>
+    <input type="checkbox" class="checkbox" value="Saint Kitts and Nevis" checked><label>Saint Kitts and Nevis</label>
+    <input type="checkbox" class="checkbox" value="Saint Lucia" checked><label>Saint Lucia</label>
+    <input type="checkbox" class="checkbox" value="Saint Pierre and Miquelon" checked><label>Saint Pierre and Miquelon</label>
+    <input type="checkbox" class="checkbox" value="Samoa" checked><label>Samoa</label>
+    <input type="checkbox" class="checkbox" value="San Marino" checked><label>San Marino</label>
+    <input type="checkbox" class="checkbox" value="Sao Tome and Principe" checked><label>Sao Tome and Principe</label>
+    <input type="checkbox" class="checkbox" value="Saudi Arabia" checked><label>Saudi Arabia</label>
+    <input type="checkbox" class="checkbox" value="Senegal" checked><label>Senegal</label>
+    <input type="checkbox" class="checkbox" value="Serbia" checked><label>Serbia</label>
+    <input type="checkbox" class="checkbox" value="Seychelles" checked><label>Seychelles</label>
+    <input type="checkbox" class="checkbox" value="Sierra Leone" checked><label>Sierra Leone</label>
+    <input type="checkbox" class="checkbox" value="Singapore" checked><label>Singapore</label>
+    <input type="checkbox" class="checkbox" value="Slovakia" checked><label>Slovakia</label>
+    <input type="checkbox" class="checkbox" value="Slovenia" checked><label>Slovenia</label>
+    <input type="checkbox" class="checkbox" value="Solomon Islands" checked><label>Solomon Islands</label>
+    <input type="checkbox" class="checkbox" value="Somalia" checked><label>Somalia</label>
+    <input type="checkbox" class="checkbox" value="South Africa" checked><label>South Africa</label>
+    <input type="checkbox" class="checkbox" value="South Georgia and The South Sandwich Islands" checked><label>South Georgia and The South Sandwich Islands</label>
+    <input type="checkbox" class="checkbox" value="Spain" checked><label>Spain</label>
+    <input type="checkbox" class="checkbox" value="Sri Lanka" checked><label>Sri Lanka</label>
+    <input type="checkbox" class="checkbox" value="Sudan" checked><label>Sudan</label>
+    <input type="checkbox" class="checkbox" value="Suriname" checked><label>Suriname</label>
+    <input type="checkbox" class="checkbox" value="Svalbard and Jan Mayen" checked><label>Svalbard and Jan Mayen</label>
+    <input type="checkbox" class="checkbox" value="Swaziland" checked><label>Swaziland</label>
+    <input type="checkbox" class="checkbox" value="Sweden" checked><label>Sweden</label>
+    <input type="checkbox" class="checkbox" value="Switzerland" checked><label>Switzerland</label>
+    <input type="checkbox" class="checkbox" value="Syrian Arab Republic" checked><label>Syrian Arab Republic</label>
+    <input type="checkbox" class="checkbox" value="Taiwan" checked><label>Taiwan</label>
+    <input type="checkbox" class="checkbox" value="Tajikistan" checked><label>Tajikistan</label>
+    <input type="checkbox" class="checkbox" value="Tanzania" checked><label>Tanzania</label>
+    <input type="checkbox" class="checkbox" value="Thailand" checked><label>Thailand</label>
+    <input type="checkbox" class="checkbox" value="Togo" checked><label>Togo</label>
+    <input type="checkbox" class="checkbox" value="Tokelau" checked><label>Tokelaue</label>
+    <input type="checkbox" class="checkbox" value="Tonga" checked><label>Tonga</label>
+    <input type="checkbox" class="checkbox" value="Trinidad and Tobago" checked><label>Trinidad and Tobago</label>
+    <input type="checkbox" class="checkbox" value="Tunisia" checked><label>Tunisia</label>
+    <input type="checkbox" class="checkbox" value="Turkey" checked><label>Turkey</label>
+    <input type="checkbox" class="checkbox" value="Turkmenistan" checked><label>Turkmenistan</label>
+    <input type="checkbox" class="checkbox" value="Turks and Caicos Islands" checked><label>Turks and Caicos Islands</label>
+    <input type="checkbox" class="checkbox" value="Tuvalu" checked><label>Tuvalu</label>
+    <input type="checkbox" class="checkbox" value="Uganda" checked><label>Uganda</label>
+    <input type="checkbox" class="checkbox" value="Ukraine" checked><label>Ukraine</label>
+    <input type="checkbox" class="checkbox" value="United Arab Emirates" checked><label>United Arab Emirates</label>
+    <input type="checkbox" class="checkbox" value="unitedKingdom" checked><label>UnitedKingdom</label>
+    <input type="checkbox" class="checkbox" value="unitedStates" checked><label>Niue</label>
+    <input type="checkbox" class="checkbox" value="United States Minor Outlying Islands" checked><label>United States Minor Outlying Islands</label>
+    <input type="checkbox" class="checkbox" value="Uruguay" checked><label>Uruguay</label>
+    <input type="checkbox" class="checkbox" value="Uzbekistan" checked><label>Uzbekistan</label>
+    <input type="checkbox" class="checkbox" value="Vanuatu" checked><label>Vanuatu</label>
+    <input type="checkbox" class="checkbox" value="Venezuela" checked><label>Venezuela</label>
+    <input type="checkbox" class="checkbox" value="Viet Nam" checked><label>Viet Nam</label>
+    <input type="checkbox" class="checkbox" value="Virgin Islands" checked><label>Virgin Islands</label>
+    <input type="checkbox" class="checkbox" value="Wallis and Futuna" checked><label>Wallis and Futuna</label>
+    <input type="checkbox" class="checkbox" value="Western Sahara" checked><label>Western Sahara</label>
+    <input type="checkbox" class="checkbox" value="Yemen" checked><label>Yemen</label>
+    <input type="checkbox" class="checkbox" value="Zambia" checked><label>Zambia</label>
+    <input type="checkbox" class="checkbox" value="Zimbabwe" checked><label>Zimbabwe</label>
+  </div>
+</div>
+
+<div>
+    <input type="radio" id="contactChoice1"
+     name="contact" value="apple" checked onclick="update()">
+    <label for="contactChoice1">apple</label>
+
+    <input type="radio" id="contactChoice2"
+     name="contact" value="phone" onclick="update()">
+    <label for="contactChoice2">Phone</label>
+
+    <input type="radio" id="contactChoice3"
+     name="contact" value="mail" onclick="update()">
+    <label for="contactChoice3">Mail</label>
+</div>
+
+
+<form>
+  Amp Factor:<br>
+  <input type="number" id="myNumber" name=AF><br>
+</form>
+
+<button id="myBtn">Try it</button>
+
+<script>
+function myFunction() {update();
+}
+</script>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+
+
+<!-- Create an element where the map will take place -->
+<svg id="my_dataviz" width="1000" height="1000"></svg>
+<script>
+// The svg
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+// Map and projection
+var projection = d3.geoNaturalEarth()
+    .scale(width / 1.3 / Math.PI)
+    .translate([width / 2, height / 2])
+  var markers = [{"name": "59.52.224.9", "ampFactor": 7.9545, "radius": 3.97725, "fillKey": 1, "latitude": 28.1938, "longitude": 115.7836, "city": "Jianguang", "country": "China", "protocol": "apple"}, {"name": "146.88.66.214", "ampFactor": 62.6061, "radius": 31.30305, "fillKey": 1, "latitude": 14.6477, "longitude": 121.0493, "city": "Quezon City", "country": "Philippines", "protocol": "dns"}, {"name": "220.247.172.229", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": -6.1741, "longitude": 106.8296, "city": "Jakarta", "country": "Indonesia", "protocol": "apple"}];
+// Load external data and boot
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
+var color = d3.scaleOrdinal()
+    .domain(["China", "Indonesia", "Philippines", "United"])
+    .range([ "#402D54", "#D18975", "#8FD175","#ff3300"])
+    // Draw the map
+    svg.append("g")
+        .selectAll("path")
+        .data(data.features)
+        .enter().append("path")
+            .attr("fill", "#69b3a2")
+            .attr("d", d3.geoPath()
+                .projection(projection)
+            )
+            // Add circles:
+                svg
+                  .selectAll("myCircles")
+                  .data(markers)
+                  .enter()
+                  .append("circle")
+                    .attr("class" , function(d){ return d.country })
+                    .attr("protocol" , function(d){ return d.protocol })
+                    .attr("cx", function(d){ return projection([d.longitude, d.latitude])[0] })
+                    .attr("cy", function(d){ return projection([d.longitude, d.latitude])[1] })
+                    .attr("r", function(d){return d.ampFactor})
+                    .style("fill", "#3697a")
+                    .attr("stroke", "#b3697a")
+                    .attr("stroke-width", 3)
+                    .attr("fill-opacity", .4)
+                    function update(){
+                     // For each check box:
+                     d3.selectAll(".checkbox").each(function(d){
+                       cb = d3.select(this);
+                       grp = cb.property("value")
+                       // If the box is check, I show the group
+                       if(cb.property("checked")){
+                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol==document.querySelector('input[name="contact"]:checked').value)
+                         {return d.ampFactor ;}
+                         else {return 0;} } )
+                       // Otherwise I hide it
+                       }else{
+                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 0).attr("r", 0)
+                       }
+                     })
+                   }
+                   // When a button change, I run the update function
+                   d3.selectAll(".checkbox").on("change",update);
+                   d3.selectAll(".radio").on("change",update);
+                   // And I initialize it at the beginning
+                   update()
+})
+</script>
