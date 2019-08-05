@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <h1>Choose your options</h1>
 
@@ -10,9 +9,7 @@
   position: relative;
   display: inline-block;
   background-color: #eb9834
-
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -22,7 +19,6 @@
   padding: 12px 16px;
   z-index: 1;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
@@ -38,13 +34,11 @@
   </div>
 </div>
 
-<div class="dropdown">
-  <span>protocols</span>
-  <div class="dropdown-content">
-    <input type="checkbox" class="checkbox" value="AF" checked><label>AF</label>
-    <input type="checkbox" class="checkbox" value="NAF" checked><label>NAF</label>
-  </div>
-</div>
+<select id="ddlViewBy">
+  <option value="a">test1</option>
+  <option value="2" selected="selected">test2</option>
+  <option value="3">test3</option>
+</select>
 
 
 <form>
@@ -69,24 +63,19 @@ function myFunction() {
 <!-- Create an element where the map will take place -->
 <svg id="my_dataviz" width="1000" height="1000"></svg>
 <script>
-
-
 // The svg
+var e = document.getElementById("ddlViewBy");
+var strUser = e.options[e.selectedIndex].value;
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
-
 // Map and projection
 var projection = d3.geoNaturalEarth()
     .scale(width / 1.3 / Math.PI)
     .translate([width / 2, height / 2])
-
-  var markers = [{"name": "59.52.224.9", "ampFactor": 7.9545, "radius": 3.97725, "fillKey": 1, "latitude": 28.1938, "longitude": 115.7836, "city": "Jianguang", "country": "China", "protocol": "dns"}, {"name": "146.88.66.214", "ampFactor": 62.6061, "radius": 31.30305, "fillKey": 1, "latitude": 14.6477, "longitude": 121.0493, "city": "Quezon City", "country": "Philippines", "protocol": "dns"}, {"name": "220.247.172.229", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": -6.1741, "longitude": 106.8296, "city": "Jakarta", "country": "Indonesia", "protocol": "dns"},{"name": "89.238.165.20", "ampFactor": 20.5942, "radius": 10.2971, "fillKey": 1, "latitude": 51.4973, "longitude": -0.1553, "city": "London", "country": "United", "protocol": "dns"}];
-
-
+  var markers = [{"name": "59.52.224.9", "ampFactor": 7.9545, "radius": 3.97725, "fillKey": 1, "latitude": 28.1938, "longitude": 115.7836, "city": "Jianguang", "country": "China", "protocol": "apple"}, {"name": "146.88.66.214", "ampFactor": 62.6061, "radius": 31.30305, "fillKey": 1, "latitude": 14.6477, "longitude": 121.0493, "city": "Quezon City", "country": "Philippines", "protocol": "dns"}, {"name": "220.247.172.229", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": -6.1741, "longitude": 106.8296, "city": "Jakarta", "country": "Indonesia", "protocol": "apple"},{"name": "89.238.165.20", "ampFactor": 20.5942, "radius": 10.2971, "fillKey": 1, "latitude": 51.4973, "longitude": -0.1553, "city": "London", "country": "United", "protocol": "dns"}];
 // Load external data and boot
 d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
-
 var color = d3.scaleOrdinal()
     .domain(["China", "Indonesia", "Philippines", "United"])
     .range([ "#402D54", "#D18975", "#8FD175","#ff3300"])
@@ -99,10 +88,6 @@ var color = d3.scaleOrdinal()
             .attr("d", d3.geoPath()
                 .projection(projection)
             )
-
-
-
-
             // Add circles:
                 svg
                   .selectAll("myCircles")
@@ -110,8 +95,7 @@ var color = d3.scaleOrdinal()
                   .enter()
                   .append("circle")
                     .attr("class" , function(d){ return d.country })
-
-
+                    .attr("protocol" , function(d){ return d.protocol })
                     .attr("cx", function(d){ return projection([d.longitude, d.latitude])[0] })
                     .attr("cy", function(d){ return projection([d.longitude, d.latitude])[1] })
                     .attr("r", function(d){return d.ampFactor})
@@ -120,18 +104,16 @@ var color = d3.scaleOrdinal()
                     .attr("stroke-width", 3)
                     .attr("fill-opacity", .4)
 
-                    // This function is gonna change the opacity and size of selected and unselected circles
-                   function update(){
-
+                    function update(){
                      // For each check box:
                      d3.selectAll(".checkbox").each(function(d){
                        cb = d3.select(this);
                        grp = cb.property("value")
-
                        // If the box is check, I show the group
                        if(cb.property("checked")){
-                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){return d.ampFactor} )
-
+                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol=="apple")
+                         {return d.ampFactor ;}
+                         else {return 0;} } )
                        // Otherwise I hide it
                        }else{
                          svg.selectAll("."+grp).transition().duration(1000).style("opacity", 0).attr("r", 0)
@@ -141,11 +123,7 @@ var color = d3.scaleOrdinal()
 
                    // When a button change, I run the update function
                    d3.selectAll(".checkbox").on("change",update);
-
-
                    // And I initialize it at the beginning
                    update()
-
 })
-
 </script>
