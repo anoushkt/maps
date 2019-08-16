@@ -1,19 +1,410 @@
-<h1>Create a New Article</h1>
-<%= form_for(@article) do |f| %>
-  <ul>
-  <% @article.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
-  <% end %>
-  </ul>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<!DOCTYPE html>
+
+<h1 style="font-family: Futura;font-size:45px;background-color:mediumpurple; color:white; postion:absolute;">Choose your options</h1>
+
+<h1 style="font-family: Futura;color:maroon;background-color: lightgrey; position:absolute; left:30px; top:95px;font-size: 25px;border: 3px solid #000000;">Countries</h1>
+<h2  style="font-family: Futura;color:maroon;background-color: lightgrey;position:absolute; left:270px; top:90px;font-size: 25px;border: 3px solid #000000;">Protocols</h2>
+<h3  style="font-family: Futura;color:maroon;background-color: lightgrey;position:absolute; left:514px; top:90px;font-size: 25px;border: 3px solid #000000;">Amp Factor</h3>
+
+<script>     function update(){
+     // For each check box:
+     d3.selectAll(".checkbox").each(function(d){
+       cb = d3.select(this);
+       grp = cb.property("value")
+       // If the box is check, I show the group
+       if(cb.property("checked")){
+         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol==document.querySelector('input[name="contact"]:checked').value)
+         {return d.ampFactor ;}
+         else {return 0;} } )
+       // Otherwise I hide it
+       }else{
+         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 0).attr("r", 0)
+       }
+     })
+   }
+</script>
+<meta charset="utf-8">
+<style>
+.dropdown {
+    padding: 20px 20px;
+    font-size: 30px;
+    border: none;
+    width:120px;
+   font-family: "Comic Sans MS", cursive, sans-serif;
+   font-color: "white"
+
+
+  position: absolute;
+  left: 30px;
+  top: 65px;
+
+
+
+
+}
+.dropdown-content {
+
+      display: none;
+      position: absolute;
+      background-color: lightgrey;
+      font-size: 15px;
+      color: black;
+      min-width: #px;
+      z-index: 1;
+
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+
+}
+</style>
+
+<div class="dropdown" style="position:absolute; left:50px; top:108px; max-height:500px;overflow:scroll;">
+  <div class="dropdown-content" style="position:relative;top:35px;width:100px;overflow:scroll;max-height:500px;">
+    <input type="checkbox" class="checkbox" value="Afghanistan" checked> <label> Afghanistan</label>
+    <br>
+    <input type="checkbox" class="checkbox" value="Åland Islands" checked><label>Åland Islands</label>
+    <br>
+    <input type="checkbox" class="checkbox" value="Albania" checked><label>Albania</label>
+     <br>
+    <input type="checkbox" class="checkbox" value="Algeria" checked><label>Algeria</label>
+      <br>
+
+    <input type="checkbox" class="checkbox" value="American Samoa" checked><label>American Samoa</label>
+      <br>
+    <input type="checkbox" class="checkbox" value="Andorra" checked><label>Andorra</label>
+      <br>
+    <input type="checkbox" class="checkbox" value="Angola" checked><label>Angola</label>
+       <br>
+    <input type="checkbox" class="checkbox" value="Anguilla" checked><label>Anguilla</label>
+       <br>
+    <input type="checkbox" class="checkbox" value="Antarctica" checked><label>Antarctica</label>
+        <br>
+    <input type="checkbox" class="checkbox" value="Antigua and Barbuda" checked><label>Antigua and Barbuda</label>
+      <br><input type="checkbox" class="checkbox" value="Argentina" checked><label>Argentina</label>
+      <br><input type="checkbox" class="checkbox" value="Armenia" checked><label>Armenia</label>
+      <br><input type="checkbox" class="checkbox" value="Aruba" checked><label>Aruba</label>
+    <br><input type="checkbox" class="checkbox" value="Australia" checked><label>Australia</label>
+    <br><input type="checkbox" class="checkbox" value="Austria" checked><label>Austria</label>
+    <br><input type="checkbox" class="checkbox" value="Azerbaijan" checked><label>Azerbaijan</label>
+    <br><input type="checkbox" class="checkbox" value="Bahamas" checked><label>Bahamas</label>
+    <br><input type="checkbox" class="checkbox" value="Bahrain" checked><label>Bahrain</label>
+    <br><input type="checkbox" class="checkbox" value="Bangladesh" checked><label>Bangladesh</label>
+    <br><input type="checkbox" class="checkbox" value="Barbados" checked><label>Barbados</label>
+    <br><input type="checkbox" class="checkbox" value="Belarus" checked><label>Belarus</label>
+    <br><input type="checkbox" class="checkbox" value="Belgium" checked><label>Belgium</label>
+    <br><input type="checkbox" class="checkbox" value="Belize" checked><label>Belize</label>
+    <br><input type="checkbox" class="checkbox" value="Benin" checked><label>Benin</label>
+    <br><input type="checkbox" class="checkbox" value="Bermuda" checked><label>Bermuda</label>
+    <br><input type="checkbox" class="checkbox" value="Bhutan" checked><label>Bhutan</label>
+    <br><input type="checkbox" class="checkbox" value="Bolivia" checked><label>Bolivia</label>
+    <br><input type="checkbox" class="checkbox" value="Bosnia and Herzegovina" checked><label>Bosnia and Herzegovina</label>
+    <br><input type="checkbox" class="checkbox" value="Botswana" checked><label>Botswana</label>
+    <br><input type="checkbox" class="checkbox" value="Bouvet Island" checked><label>Bouvet Island</label>
+    <br><input type="checkbox" class="checkbox" value="Brazil" checked><label>Brazil</label>
+    <br><input type="checkbox" class="checkbox" value="British Indian Ocean Territory" checked><label>British Indian Ocean Territory</label>
+    <br><input type="checkbox" class="checkbox" value="Brunei Darussalam" checked><label>Brunei Darussalam</label>
+    <br><input type="checkbox" class="checkbox" value="Bulgaria" checked><label>Bulgaria</label>
+    <br><input type="checkbox" class="checkbox" value="Burkina Faso" checked><label>Burkina Faso</label>
+    <br><input type="checkbox" class="checkbox" value="Burundi" checked><label>Burundi</label>
+    <br><input type="checkbox" class="checkbox" value="Cambodia" checked><label>Cambodia</label>
+    <br><input type="checkbox" class="checkbox" value="Cameroon" checked><label>Cameroon</label>
+    <br><input type="checkbox" class="checkbox" value="Canada" checked><label>Canada</label>
+    <br><input type="checkbox" class="checkbox" value="Cape Verde" checked><label>Cape Verde</label>
+    <br><input type="checkbox" class="checkbox" value="Cayman Islands" checked><label>Cayman Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Central African Republic" checked><label>Central African Republic</label>
+    <br><input type="checkbox" class="checkbox" value="Chad" checked><label>Chad</label>
+    <br><input type="checkbox" class="checkbox" value="Chile" checked><label>Chile</label>
+    <br><input type="checkbox" class="checkbox" value="China" checked><label>China</label>
+    <br><input type="checkbox" class="checkbox" value="Christmas Island" checked><label>Christmas Island</label>
+    <br><input type="checkbox" class="checkbox" value="Colombia" checked><label>Colombia</label>
+    <br><input type="checkbox" class="checkbox" value="Comoros" checked><label>Comoros</label>
+    <br><input type="checkbox" class="checkbox" value="Congo" checked><label>Congo</label>
+    <br><input type="checkbox" class="checkbox" value="Congo, The Democratic Republic of The" checked><label>Congo, The Democratic Republic of The</label>
+    <br><input type="checkbox" class="checkbox" value="Cook Islands" checked><label>Cook Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Costa Rica" checked><label>Costa Rica</label>
+    <br><input type="checkbox" class="checkbox" value="Croatia" checked><label>Croatia</label>
+    <br><input type="checkbox" class="checkbox" value="Cuba" checked><label>Cuba</label>
+    <br><input type="checkbox" class="checkbox" value="Cyprus" checked><label>Cyprus</label>
+    <br><input type="checkbox" class="checkbox" value="Czech Republic" checked><label>Czech Republic</label>
+    <br><input type="checkbox" class="checkbox" value="Denmark" checked><label>Denmark</label>
+    <br><input type="checkbox" class="checkbox" value="Djibouti" checked><label>Djibouti</label>
+    <br><input type="checkbox" class="checkbox" value="Dominica" checked><label>Dominica</label>
+    <br><input type="checkbox" class="checkbox" value="Dominican Republic" checked><label>Dominican Republic</label>
+    <br><input type="checkbox" class="checkbox" value="Ecuador" checked><label>Ecuador</label>
+    <br><input type="checkbox" class="checkbox" value="El Salvador" checked><label>El Salvador</label>
+    <br><input type="checkbox" class="checkbox" value="Equatorial Guinea" checked><label>Equatorial Guinea</label>
+    <br><input type="checkbox" class="checkbox" value="Eritrea" checked><label>Eritrea</label>
+    <br><input type="checkbox" class="checkbox" value="Estonia" checked><label>Estonia</label>
+    <br><input type="checkbox" class="checkbox" value="Ethiopia" checked><label>Ethiopia</label>
+    <br><input type="checkbox" class="checkbox" value="Faroe Islands" checked><label>Faroe Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Fiji" checked><label>Fiji</label>
+    <br><input type="checkbox" class="checkbox" value="Finland" checked><label>Finland</label>
+    <br><input type="checkbox" class="checkbox" value="France" checked><label>France</label>
+    <br><input type="checkbox" class="checkbox" value="French Guiana" checked><label>French Guiana</label>
+    <br><input type="checkbox" class="checkbox" value="French Polynesia" checked><label>French Polynesia</label>
+    <br><input type="checkbox" class="checkbox" value="French Southern Territories" checked><label>French Southern Territories</label>
+    <br><input type="checkbox" class="checkbox" value="Gabon" checked><label>Gabon</label>
+    <br><input type="checkbox" class="checkbox" value="Gambia" checked><label>Gambia</label>
+    <br><input type="checkbox" class="checkbox" value="Georgia" checked><label>Georgia</label>
+    <br><input type="checkbox" class="checkbox" value="Germany" checked><label>Germany</label>
+    <br><input type="checkbox" class="checkbox" value="Ghana" checked><label>Ghana</label>
+    <br><input type="checkbox" class="checkbox" value="Gibraltar" checked><label>Gibraltar</label>
+    <br><input type="checkbox" class="checkbox" value="Greece" checked><label>Greece</label>
+    <br><input type="checkbox" class="checkbox" value="Greenland" checked><label>Greenland</label>
+    <br><input type="checkbox" class="checkbox" value="Grenada" checked><label>Grenada</label>
+    <br><input type="checkbox" class="checkbox" value="Guadeloupe" checked><label>Guadeloupe</label>
+    <br><input type="checkbox" class="checkbox" value="Guam" checked><label>Guam</label>
+    <br><input type="checkbox" class="checkbox" value="Guatemala" checked><label>Guatemala</label>
+    <br><input type="checkbox" class="checkbox" value="Guernsey" checked><label>Guernsey</label>
+    <br><input type="checkbox" class="checkbox" value="Guinea" checked><label>Guinea</label>
+    <br><input type="checkbox" class="checkbox" value="Guyana" checked><label>Guyana</label>
+    <br><input type="checkbox" class="checkbox" value="Haiti" checked><label>Haiti</label>
+    <br><input type="checkbox" class="checkbox" value="Heard Island and Mcdonald Islands" checked><label>Heard Island and Mcdonald Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Honduras" checked><label>Honduras</label>
+    <br><input type="checkbox" class="checkbox" value="Hong Kong" checked><label>Hong Kong</label>
+    <br><input type="checkbox" class="checkbox" value="Hungary" checked><label>Hungary</label>
+    <br><input type="checkbox" class="checkbox" value="Iceland" checked><label>Iceland</label>
+    <br><input type="checkbox" class="checkbox" value="India" checked><label>India</label>
+    <br><input type="checkbox" class="checkbox" value="Indonesia" checked><label>Indonesia</label>
+    <br><input type="checkbox" class="checkbox" value="Iran, Islamic Republic of" checked><label>Iran, Islamic Republic of</label>
+    <br><input type="checkbox" class="checkbox" value="Iraq" checked><label>Iraq</label>
+    <br><input type="checkbox" class="checkbox" value="Ireland" checked><label>Ireland</label>
+    <br><input type="checkbox" class="checkbox" value="Isle of Man" checked><label>Isle of Man</label>
+    <br><input type="checkbox" class="checkbox" value="Israel" checked><label>Israel</label>
+    <br><input type="checkbox" class="checkbox" value="Italy" checked><label>Italy</label>
+    <br><input type="checkbox" class="checkbox" value="Jamaica" checked><label>Jamaica</label>
+    <br><input type="checkbox" class="checkbox" value="Japan" checked><label>Japan</label>
+    <br><input type="checkbox" class="checkbox" value="Jersey" checked><label>Jersey</label>
+    <br><input type="checkbox" class="checkbox" value="Jordan" checked><label>Jordan</label>
+    <br><input type="checkbox" class="checkbox" value="Kazakhstan" checked><label>Kazakhstan</label>
+    <br><input type="checkbox" class="checkbox" value="Kenya" checked><label>Kenya</label>
+    <br><input type="checkbox" class="checkbox" value="Kiribati" checked><label>Kiribati</label>
+    <br><input type="checkbox" class="checkbox" value="Korea" checked><label>Korea</label>
+    <br><input type="checkbox" class="checkbox" value="Kuwait" checked><label>Kuwait</label>
+    <br><input type="checkbox" class="checkbox" value="Kyrgyzstan" checked><label>Kyrgyzstan</label>
+    <br><input type="checkbox" class="checkbox" value="Latvia" checked><label>Latvia</label>
+    <br><input type="checkbox" class="checkbox" value="Lebanon" checked><label>Lebanon</label>
+    <br><input type="checkbox" class="checkbox" value="Lesotho" checked><label>Lesotho</label>
+    <br><input type="checkbox" class="checkbox" value="Liberia" checked><label>Liberia</label>
+    <br><input type="checkbox" class="checkbox" value="Libyan Arab Jamahiriya" checked><label>Libyan Arab Jamahiriya</label>
+    <br><input type="checkbox" class="checkbox" value="Liechtenstein" checked><label>Liechtenstein</label>
+    <br><input type="checkbox" class="checkbox" value="Lithuania" checked><label>Lithuania</label>
+    <br><input type="checkbox" class="checkbox" value="Luxembourg" checked><label>Luxembourg</label>
+    <br><input type="checkbox" class="checkbox" value="Macao" checked><label>Macao</label>
+    <br><input type="checkbox" class="checkbox" value="Macedonia" checked><label>Macedonia</label>
+    <br><input type="checkbox" class="checkbox" value="Madagascar" checked><label>Madagascar</label>
+    <br><input type="checkbox" class="checkbox" value="Malawi" checked><label>Malawi</label>
+    <br><input type="checkbox" class="checkbox" value="Malaysia" checked><label>Malaysia</label>
+    <br><input type="checkbox" class="checkbox" value="Maldives" checked><label>Maldives</label>
+    <br><input type="checkbox" class="checkbox" value="Mali" checked><label>Mali</label>
+    <br><input type="checkbox" class="checkbox" value="Malta" checked><label>Malta</label>
+    <br><input type="checkbox" class="checkbox" value="Marshall Islands" checked><label>Marshall Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Martinique" checked><label>Martinique</label>
+    <br><input type="checkbox" class="checkbox" value="Mauritania" checked><label>Mauritania</label>
+    <br><input type="checkbox" class="checkbox" value="Mauritius" checked><label>Mauritius</label>
+    <br><input type="checkbox" class="checkbox" value="Mayotte" checked><label>Mayotte</label>
+    <br><input type="checkbox" class="checkbox" value="Mexico" checked><label>Mexico</label>
+    <br><input type="checkbox" class="checkbox" value="Micronesia" checked><label>Micronesia</label>
+    <br><input type="checkbox" class="checkbox" value="Moldova" checked><label>Moldova</label>
+    <br><input type="checkbox" class="checkbox" value="Monaco" checked><label>Monaco</label>
+    <br><input type="checkbox" class="checkbox" value="Mongolia" checked><label>Mongolia</label>
+    <br><input type="checkbox" class="checkbox" value="Montenegro" checked><label>Montenegro</label>
+    <br><input type="checkbox" class="checkbox" value="Montserrat" checked><label>Montserrat</label>
+    <br><input type="checkbox" class="checkbox" value="Morocco" checked><label>Morocco</label>
+    <br><input type="checkbox" class="checkbox" value="Mozambique" checked><label>Mozambique</label>
+    <br><input type="checkbox" class="checkbox" value="Myanmar" checked><label>Myanmar</label>
+    <br><input type="checkbox" class="checkbox" value="Namibia" checked><label>Namibia</label>
+    <br><input type="checkbox" class="checkbox" value="Nauru" checked><label>Nauru</label>
+    <br><input type="checkbox" class="checkbox" value="Nepal" checked><label>Nepal</label>
+    <br><input type="checkbox" class="checkbox" value="Netherlands" checked><label>Netherlands</label>
+    <br><input type="checkbox" class="checkbox" value="Netherlands Antilles" checked><label>Netherlands Antilles</label>
+    <br><input type="checkbox" class="checkbox" value="New Caledonia" checked><label>New Caledonia</label>
+    <br><input type="checkbox" class="checkbox" value="New Zealand" checked><label>New Zealand</label>
+    <br><input type="checkbox" class="checkbox" value="Nicaragua" checked><label>Nicaragua</label>
+    <br><input type="checkbox" class="checkbox" value="Niger" checked><label>Niger</label>
+    <br><input type="checkbox" class="checkbox" value="Nigeria" checked><label>Nigeria</label>
+    <br><input type="checkbox" class="checkbox" value="Niue" checked><label>Niue</label>
+    <br><input type="checkbox" class="checkbox" value="Norfolk Island" checked><label>Norfolk Island</label>
+    <br><input type="checkbox" class="checkbox" value="Northern Mariana Islands" checked><label>Northern Mariana Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Norway" checked><label>Norway</label>
+    <br><input type="checkbox" class="checkbox" value="Oman" checked><label>Oman</label>
+    <br><input type="checkbox" class="checkbox" value="Pakistan" checked><label>Pakistan</label>
+    <br><input type="checkbox" class="checkbox" value="Palau" checked><label>Palau</label>
+    <br><input type="checkbox" class="checkbox" value="Palestinian Territory" checked><label>Palestinian Territory</label>
+    <br><input type="checkbox" class="checkbox" value="Panama" checked><label>Panama</label>
+    <br><input type="checkbox" class="checkbox" value="Papua New Guinea" checked><label>Papua New Guinea</label>
+    <br><input type="checkbox" class="checkbox" value="Paraguay" checked><label>Paraguay</label>
+    <br><input type="checkbox" class="checkbox" value="Peru" checked><label>Peru</label>
+    <br><input type="checkbox" class="checkbox" value="Philippines" checked><label>Philippines</label>
+    <br><input type="checkbox" class="checkbox" value="Pitcairn" checked><label>Pitcairn</label>
+    <br><input type="checkbox" class="checkbox" value="Poland" checked><label>Poland</label>
+    <br><input type="checkbox" class="checkbox" value="Portugal" checked><label>Portugal</label>
+    <br><input type="checkbox" class="checkbox" value="Puerto Rico" checked><label>Puerto Rico</label>
+    <br><input type="checkbox" class="checkbox" value="Qatar" checked><label>Qatar</label>
+    <br><input type="checkbox" class="checkbox" value="Reunion" checked><label>Reunion</label>
+    <br><input type="checkbox" class="checkbox" value="Romania" checked><label>Romania</label>
+    <br><input type="checkbox" class="checkbox" value="Russian Federation" checked><label>Russian Federation</label>
+    <br><input type="checkbox" class="checkbox" value="Rwanda" checked><label>Rwanda</label>
+    <br><input type="checkbox" class="checkbox" value="Saint Helena" checked><label>Saint Helena</label>
+    <br><input type="checkbox" class="checkbox" value="Saint Kitts and Nevis" checked><label>Saint Kitts and Nevis</label>
+    <br><input type="checkbox" class="checkbox" value="Saint Lucia" checked><label>Saint Lucia</label>
+    <br><input type="checkbox" class="checkbox" value="Saint Pierre and Miquelon" checked><label>Saint Pierre and Miquelon</label>
+    <br><input type="checkbox" class="checkbox" value="Samoa" checked><label>Samoa</label>
+    <br><input type="checkbox" class="checkbox" value="San Marino" checked><label>San Marino</label>
+    <br><input type="checkbox" class="checkbox" value="Sao Tome and Principe" checked><label>Sao Tome and Principe</label>
+    <br><input type="checkbox" class="checkbox" value="Saudi Arabia" checked><label>Saudi Arabia</label>
+    <br><input type="checkbox" class="checkbox" value="Senegal" checked><label>Senegal</label>
+    <br><input type="checkbox" class="checkbox" value="Serbia" checked><label>Serbia</label>
+    <br><input type="checkbox" class="checkbox" value="Seychelles" checked><label>Seychelles</label>
+    <br><input type="checkbox" class="checkbox" value="Sierra Leone" checked><label>Sierra Leone</label>
+    <br><input type="checkbox" class="checkbox" value="Singapore" checked><label>Singapore</label>
+    <br><input type="checkbox" class="checkbox" value="Slovakia" checked><label>Slovakia</label>
+    <br><input type="checkbox" class="checkbox" value="Slovenia" checked><label>Slovenia</label>
+    <br><input type="checkbox" class="checkbox" value="Solomon Islands" checked><label>Solomon Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Somalia" checked><label>Somalia</label>
+    <br><input type="checkbox" class="checkbox" value="South Africa" checked><label>South Africa</label>
+    <br><input type="checkbox" class="checkbox" value="South Georgia and The South Sandwich Islands" checked><label>South Georgia and The South Sandwich Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Spain" checked><label>Spain</label>
+    <br><input type="checkbox" class="checkbox" value="Sri Lanka" checked><label>Sri Lanka</label>
+    <br><input type="checkbox" class="checkbox" value="Sudan" checked><label>Sudan</label>
+    <br><input type="checkbox" class="checkbox" value="Suriname" checked><label>Suriname</label>
+    <br><input type="checkbox" class="checkbox" value="Svalbard and Jan Mayen" checked><label>Svalbard and Jan Mayen</label>
+    <br><input type="checkbox" class="checkbox" value="Swaziland" checked><label>Swaziland</label>
+    <br><input type="checkbox" class="checkbox" value="Sweden" checked><label>Sweden</label>
+    <br><input type="checkbox" class="checkbox" value="Switzerland" checked><label>Switzerland</label>
+    <br><input type="checkbox" class="checkbox" value="Syrian Arab Republic" checked><label>Syrian Arab Republic</label>
+    <br><input type="checkbox" class="checkbox" value="Taiwan" checked><label>Taiwan</label>
+    <br><input type="checkbox" class="checkbox" value="Tajikistan" checked><label>Tajikistan</label>
+    <br><input type="checkbox" class="checkbox" value="Tanzania" checked><label>Tanzania</label>
+    <br><input type="checkbox" class="checkbox" value="Thailand" checked><label>Thailand</label>
+    <br><input type="checkbox" class="checkbox" value="Togo" checked><label>Togo</label>
+    <br><input type="checkbox" class="checkbox" value="Tokelau" checked><label>Tokelaue</label>
+    <br><input type="checkbox" class="checkbox" value="Tonga" checked><label>Tonga</label>
+    <br><input type="checkbox" class="checkbox" value="Trinidad and Tobago" checked><label>Trinidad and Tobago</label>
+    <br><input type="checkbox" class="checkbox" value="Tunisia" checked><label>Tunisia</label>
+    <br><input type="checkbox" class="checkbox" value="Turkey" checked><label>Turkey</label>
+    <br><input type="checkbox" class="checkbox" value="Turkmenistan" checked><label>Turkmenistan</label>
+    <br><input type="checkbox" class="checkbox" value="Turks and Caicos Islands" checked><label>Turks and Caicos Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Tuvalu" checked><label>Tuvalu</label>
+    <br><input type="checkbox" class="checkbox" value="Uganda" checked><label>Uganda</label>
+    <br><input type="checkbox" class="checkbox" value="Ukraine" checked><label>Ukraine</label>
+    <br><input type="checkbox" class="checkbox" value="United Arab Emirates" checked><label>United Arab Emirates</label>
+    <br><input type="checkbox" class="checkbox" value="unitedKingdom" checked><label>UnitedKingdom</label>
+    <br><input type="checkbox" class="checkbox" value="unitedStates" checked><label>unitedStates</label>
+    <br><input type="checkbox" class="checkbox" value="United States Minor Outlying Islands" checked><label>United States Minor Outlying Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Uruguay" checked><label>Uruguay</label>
+    <br><input type="checkbox" class="checkbox" value="Uzbekistan" checked><label>Uzbekistan</label>
+    <br><input type="checkbox" class="checkbox" value="Vanuatu" checked><label>Vanuatu</label>
+    <br><input type="checkbox" class="checkbox" value="Venezuela" checked><label>Venezuela</label>
+    <br><input type="checkbox" class="checkbox" value="Viet Nam" checked><label>Viet Nam</label>
+    <br><input type="checkbox" class="checkbox" value="Virgin Islands" checked><label>Virgin Islands</label>
+    <br><input type="checkbox" class="checkbox" value="Wallis and Futuna" checked><label>Wallis and Futuna</label>
+    <br><input type="checkbox" class="checkbox" value="Western Sahara" checked><label>Western Sahara</label>
+    <br><input type="checkbox" class="checkbox" value="Yemen" checked><label>Yemen</label>
+    <br><input type="checkbox" class="checkbox" value="Zambia" checked><label>Zambia</label>
+    <br><input type="checkbox" class="checkbox" value="Zimbabwe" checked><label>Zimbabwe</label>
+  </div>
+</div>
+<div class="dropdown" style="position:absolute; left:280px; top:98px;font-size: 30px;">
+
+    <div class="dropdown-content" style="position:relative;top:45px;width:200px;">
+    <input type="radio" id="contactChoice1"
+     name="contact" value="dns" checked onclick="update()">
+    <label for="contactChoice1">dns</label>
+    <br>
+
+
+    <input type="radio" id="contactChoice2"
+     name="contact" value="dnsallfilter" onclick="update()">
+    <label for="contactChoice2">dnsallfilter</label>
+    <br>
+    <input type="radio" id="contactChoice3"
+     name="contact" value="ntpPrivate" onclick="update()">
+    <label for="contactChoice3">ntpPrivate</label>
+    <br>
+
+      <input type="radio" id="contactChoice4"
+       name="contact" value="chargen" onclick="update()">
+      <label for="contactChoice4">chargen</label>
+
+      <br><input type="radio" id="contactChoice5"
+       name="contact" value="ssdp" onclick="update()">
+      <label for="contactChoice5">ssdp</label>
+      </div>
+
+
+</div>
+
+<script>
+function myFunction() {update();
+}
+</script>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+
+
+<!-- Create an element where the map will take place -->
+<svg id="my_dataviz" width="1350" height="1000"></svg>
+<script>
+// The svg
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+// Map and projection
+var projection = d3.geoNaturalEarth()
+    .scale(width / 1.3 / Math.PI)
+    .translate([width / 2, height / 2])
+  var markers = [{"name": "59.52.224.9", "ampFactor": 7.9545, "radius": 3.97725, "fillKey": 1, "latitude": 28.1938, "longitude": 115.7836, "city": "Jianguang", "country": "China", "protocol": "dns"}, {"name": "146.88.66.214", "ampFactor": 62.6061, "radius": 31.30305, "fillKey": 1, "latitude": 14.6477, "longitude": 121.0493, "city": "Quezon City", "country": "Philippines", "protocol": "dns"}, {"name": "220.247.172.229", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": -6.1741, "longitude": 106.8296, "city": "Jakarta", "country": "Indonesia", "protocol": "dns"}, {"name": "107.154.51.107", "ampFactor": 4.197, "radius": 2.0985, "fillKey": 1, "latitude": 37.751, "longitude": -97.822, "city": null, "country": "unitedStates", "protocol": "dns"}, {"name": "166.62.58.44", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": 33.6013, "longitude": -111.8867, "city": "Scottsdale", "country": "unitedStates", "protocol": "dns"}, {"name": "39.129.208.114", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 25.0389, "longitude": 102.7183, "city": "Kunming", "country": "China", "protocol": "dns"}, {"name": "221.7.103.25", "ampFactor": 8.1212, "radius": 4.0606, "fillKey": 1, "latitude": 29.5569, "longitude": 106.5531, "city": null, "country": "China", "protocol": "dns"}, {"name": "96.72.225.114", "ampFactor": 23.4545, "radius": 11.72725, "fillKey": 1, "latitude": 39.6192, "longitude": -85.4321, "city": "Rushville", "country": "unitedStates", "protocol": "dns"}, {"name": "213.145.139.30", "ampFactor": 18.1364, "radius": 9.0682, "fillKey": 1, "latitude": 41.0, "longitude": 75.0, "city": null, "country": "Kyrgyzstan", "protocol": "dns"}, {"name": "67.231.250.14", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": 42.747, "longitude": -73.7527, "city": "Latham", "country": "unitedStates", "protocol": "dns"}, {"name": "89.238.165.20", "ampFactor": 20.5942, "radius": 10.2971, "fillKey": 1, "latitude": 51.4973, "longitude": -0.1553, "city": "London", "country": "unitedKingdom", "protocol": "dns"}, {"name": "217.10.200.62", "ampFactor": 18.1818, "radius": 9.0909, "fillKey": 1, "latitude": 44.4354, "longitude": 26.1033, "city": "Bucharest", "country": "Romania", "protocol": "dns"}, {"name": "8.46.206.164", "ampFactor": 23.4545, "radius": 11.72725, "fillKey": 1, "latitude": 40.2874, "longitude": -84.1622, "city": "Sidney", "country": "unitedStates", "protocol": "dns"}, {"name": "118.218.81.122", "ampFactor": 8.1818, "radius": 4.0909, "fillKey": 1, "latitude": 37.5112, "longitude": 126.97409999999999, "city": null, "country": "South Korea", "protocol": "dns"}, {"name": "64.2.160.190", "ampFactor": 23.4545, "radius": 11.72725, "fillKey": 1, "latitude": 37.751, "longitude": -97.822, "city": null, "country": "unitedStates", "protocol": "dns"}, {"name": "59.60.23.108", "ampFactor": 8.1818, "radius": 4.0909, "fillKey": 1, "latitude": 24.4798, "longitude": 118.0819, "city": null, "country": "China", "protocol": "dns"}, {"name": "201.184.40.48", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 3.4384, "longitude": -76.5232, "city": "Santiago de Cali", "country": "Colombia", "protocol": "dns"}, {"name": "45.56.85.215", "ampFactor": 1.4242, "radius": 0.7121, "fillKey": 1, "latitude": 37.5625, "longitude": -122.0004, "city": "Fremont", "country": "unitedStates", "protocol": "dns"}, {"name": "146.83.132.8", "ampFactor": 1.0, "radius": 0.5, "fillKey": 1, "latitude": -29.9533, "longitude": -71.3436, "city": "Coquimbo", "country": "Chile", "protocol": "dns"}, {"name": "220.248.87.98", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 31.0449, "longitude": 121.4012, "city": null, "country": "China", "protocol": "dns"}, {"name": "67.231.250.28", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": 42.747, "longitude": -73.7527, "city": "Latham", "country": "unitedStates", "protocol": "dns"}, {"name": "96.71.229.141", "ampFactor": 1.4242, "radius": 0.7121, "fillKey": 1, "latitude": 36.317, "longitude": -119.3087, "city": "Visalia", "country": "unitedStates", "protocol": "dns"}, {"name": "217.12.123.98", "ampFactor": 50.2727, "radius": 25.13635, "fillKey": 1, "latitude": 47.0052, "longitude": 28.8573, "city": "Chisinau", "country": "Republic of Moldova", "protocol": "dns"}, {"name": "201.187.102.185", "ampFactor": 10.4394, "radius": 5.2197, "fillKey": 1, "latitude": -33.4378, "longitude": -70.6503, "city": null, "country": "Chile", "protocol": "dns"}, {"name": "153.99.125.167", "ampFactor": 19.4848, "radius": 9.7424, "fillKey": 1, "latitude": 32.0617, "longitude": 118.7778, "city": null, "country": "China", "protocol": "dns"}, {"name": "61.240.23.66", "ampFactor": 8.0303, "radius": 4.01515, "fillKey": 1, "latitude": 34.7725, "longitude": 113.7266, "city": null, "country": "China", "protocol": "dns"}, {"name": "217.13.222.24", "ampFactor": 0.0, "radius": 0.0, "fillKey": 1, "latitude": 44.0486, "longitude": 43.0594, "city": "Pyatigorsk", "country": "Russia", "protocol": "dns"},{"name": "112.91.152.161", "ampFactor": 22.085714285714282, "radius": 11.042857142857141, "fillKey": "defaultBubble", "latitude": 23.1167, "longitude": 113.25, "city": null, "country": "China", "protocol": "dnsallfilter"}];
+// Load external data and boot
+d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson", function(data){
+    // Draw the map
+    svg.append("g")
+        .selectAll("path")
+        .data(data.features)
+        .enter().append("path")
+            .attr("fill", "#69b3a2")
+            .attr("d", d3.geoPath()
+                .projection(projection)
+            )
+            // Add circles:
+                svg
+                  .selectAll("myCircles")
+                  .data(markers)
+                  .enter()
+                  .append("circle")
+                    .attr("class" , function(d){ return d.country })
+                    .attr("protocol" , function(d){ return d.protocol })
+                    .attr("cx", function(d){ return projection([d.longitude, d.latitude])[0] })
+                    .attr("cy", function(d){ return projection([d.longitude, d.latitude])[1] })
+                    .attr("r", function(d){return d.ampFactor})
+                    .style("fill", "#3697a")
+                    .attr("stroke", "#b3697a")
+                    .attr("stroke-width", 3)
+                    .attr("fill-opacity", .4)
+                    function update(){
+                     // For each check box:
+                     d3.selectAll(".checkbox").each(function(d){
+                       cb = d3.select(this);
+                       grp = cb.property("value")
+                       // If the box is check, I show the group
+                       if(cb.property("checked")){
+                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 1).attr("r", function(d){if (d.protocol==document.querySelector('input[name="contact"]:checked').value)
+                         {return d.ampFactor ;}
+                         else {return 0;} } )
+                       // Otherwise I hide it
+                       }else{
+                         svg.selectAll("."+grp).transition().duration(1000).style("opacity", 0).attr("r", 0)
+                       }
+                     })
+                   }
+                   // When a button change, I run the update function
+                   d3.selectAll(".checkbox").on("change",update);
+                   d3.selectAll(".checkbox").on("change",update);
+                   // And I initialize it at the beginning
+                   update()
+})
+</script>
